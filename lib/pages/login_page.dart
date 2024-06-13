@@ -6,7 +6,7 @@ import 'package:socialmedia_demo/helper/helper_functions.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
-  LoginPage({
+  const LoginPage({
     super.key,
     required this.onTap,
   });
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   // login method
-  void login() async {
+  void login(BuildContext context) async {
     showDialog(context: context, 
       builder: (context) => const Center(
         child: CircularProgressIndicator(),
@@ -34,11 +34,10 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text
       );
 
-      if(context.mounted) {
+      if(!context.mounted) return;
         Navigator.pop(context);
-      }
     } on FirebaseAuthException catch (e) {
-      alertUser(e.code, context);
+        alertUser(e.code, context);
     }
   }
 
@@ -108,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 15),
 
               // sign in button
-              MyButton(text: 'Login', onTap: login),
+              MyButton(text: 'Login', onTap: () => login(context)),
               const SizedBox(height: 25),
 
               // if you aren't registered, you can sign up here

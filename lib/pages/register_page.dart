@@ -7,7 +7,7 @@ import 'package:socialmedia_demo/helper/helper_functions.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
-  RegisterPage({
+  const RegisterPage({
     super.key,
     required this.onTap,
   });
@@ -27,7 +27,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController confirmPasswordController = TextEditingController();
 
   // login method
-  void registerUser() async {
+  void registerUser(BuildContext context) async {
     // show loading circle
     showDialog(
       context: context,
@@ -60,6 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
       // create a user document and add to firestore
       createUserDocument(usercredential);
 
+      if (!context.mounted) return;
       // pop loading circle
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -154,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 25),
           
               // Register button
-              MyButton(text: 'Register', onTap: registerUser),
+              MyButton(text: 'Register', onTap: () => registerUser(context)),
               const SizedBox(height: 25),
 
               // if you aren't registered, you can sign up here
