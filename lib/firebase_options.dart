@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:socialmedia_demo/helper/helper_functions.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,8 +50,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDoSvs-FFEOgHF5DVYilkG6N5Yv2fpS62c',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: firebaseWebApiKey,
     appId: '1:558275033106:web:df692256a3b7c155a140cb',
     messagingSenderId: '558275033106',
     projectId: 'learnflutter-auth',
@@ -58,8 +59,8 @@ class DefaultFirebaseOptions {
     storageBucket: 'learnflutter-auth.appspot.com',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCQ8DnFDU9Rlrj4ywvVLETje_LH4mLcVV0',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: firebaseAndroidApiKey,
     appId: '1:558275033106:android:0b626de02fb3fc1aa140cb',
     messagingSenderId: '558275033106',
     projectId: 'learnflutter-auth',
