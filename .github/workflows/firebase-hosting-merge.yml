@@ -10,7 +10,11 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: flutter/flutter-action@v2
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2.16.0
+        env:
+          FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
+          FIREBASE_ANDROID_API_KEY: ${{ secrets.FIREBASE_ANDROID_API_KEY }}
       - run: flutter build web
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -18,3 +22,7 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LEARNFLUTTER_AUTH }}
           channelId: live
           projectId: learnflutter-auth
+
+          # - name: Flutter action
+          # uses: subosito/flutter-action@v2.16.0
+      
