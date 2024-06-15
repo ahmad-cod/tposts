@@ -3,7 +3,8 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:socialmedia_demo/helper/helper_functions.dart';
+// import 'package:socialmedia_demo/helper/helper_functions.dart';
+import 'package:socialmedia_demo/secrets.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///

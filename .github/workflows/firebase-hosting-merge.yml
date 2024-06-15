@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2.16.0
+      - run: echo $SECRETS_FILE_CONTENT | base64 -d > lib/secrets.dart
         env:
-          FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
-          FIREBASE_ANDROID_API_KEY: ${{ secrets.FIREBASE_ANDROID_API_KEY }}
+          SECRETS_FILE_CONTENT: ${{ secrets.SECRETS_FILE_CONTENT }}
       - run: flutter build web
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
